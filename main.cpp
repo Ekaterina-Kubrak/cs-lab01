@@ -13,7 +13,7 @@ int main()
     {
         cin >> numbers[i];
     }
-    cerr << "Vvedite kolichestvo chisel";
+    cerr << "Vvedite kolichestvo chisel:" << endl;
     size_t bin_count;
     cin >> bin_count;
     vector<size_t>bins(bin_count,0);
@@ -53,6 +53,7 @@ int main()
     {
         koeff = static_cast<double>(MAX_AST)/max_count;
     }
+    size_t sred = number_count/bin_count;
     for(size_t bin:bins)
     {
         if(bin < 10)
@@ -70,9 +71,27 @@ int main()
         }
         cout << bin << "|";
         size_t height = bin*koeff;
-        for(int i=0; i<height; i++)
+        if(height>=sred)
         {
-            cout << "*";
+            for(int i=0; i<sred; i++)
+            {
+                cout << "*";
+            }
+            for (size_t k = sred; k<height; k++)
+            {
+                cout << "+";
+            }
+        }
+        else
+        {
+            for(int i=0; i<height; i++)
+            {
+                cout << "*";
+            }
+            for(size_t m = height; m < sred; m++)
+            {
+                cout << "-";
+            }
         }
         cout << endl;
     }
